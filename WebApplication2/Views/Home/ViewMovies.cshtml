@@ -1,0 +1,13 @@
+﻿@{
+    ViewData["Title"] = "Mooovies";
+}
+@model WebApplication2.Models.Movie
+<form asp-action="MovieForm" asp-controller="Home">
+    <label>Id:</label>
+    <input class="form-control" type="number"placeholder="0"asp-for="Id"></input>
+    <label>Title:</label>
+    <input class="form-control" type="text"asp-for="Title"></input>
+    <label class="mt-4">Date:</label>
+    <input class="form-control"type="date"asp-for="ReleaseDate"></input>
+    <button class="btn btn-primary mt-4" type="submit">OK</button>
+</form>

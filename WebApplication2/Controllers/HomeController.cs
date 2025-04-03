@@ -30,12 +30,31 @@ namespace WebApplication2.Controllers
             return View(allMovies);
         }
 
-        public IActionResult ViewMovies() {
+        public IActionResult ViewMovies(int? id) {
+            if (id!=null)
+            {
+                var moviesInDB = _context.Movies.SingleOrDefault(x => x.Id == id);
+                return View(moviesInDB);
+            }
             return View();
         }
 
+        public IActionResult DeleteMovies(int? id) {
+            var moviesInDB = _context.Movies.SingleOrDefault(x=>x.Id==id);
+            _context.Movies.Remove(moviesInDB);
+            _context.SaveChanges();
+            return RedirectToAction("Movie");
+        }
+
         public IActionResult MovieForm(Movie model) {
-            _context.Movies.Add(model);
+            if (model.Id == 0)
+            {
+                _context.Movies.Add(model);
+            }
+            else {
+                _context.Movies.Update(model);
+            }
+
             _context.SaveChanges();
             return RedirectToAction("Movie");
         }

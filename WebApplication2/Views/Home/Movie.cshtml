@@ -7,7 +7,8 @@
 <br></br><table class="table"><thead>
         <tr><th>Id</th>
             <th>Title<th/>
-                <th>Date</th></tr>
+                <th>Date</th>
+                <th>Action</th></tr>
     </thead>
     <tbody>
         @{
@@ -18,6 +19,8 @@
             <td>@movie.Id</td>
             <td>@movie.Title</td>
             <td>@movie.ReleaseDate</td>
+            <td><a asp-action="ViewMovies" asp-route-id="@movie.Id">Edit</a></td>
+            <td><a asp-action="DeleteMovies"asp-route-id="@movie.Id">Delete</a></td>
             </tr>}
         }
     </tbody>
